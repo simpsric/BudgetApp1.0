@@ -1,0 +1,128 @@
+<mxfile host="65bd71144e">
+    <diagram name="Transaction Structure" id="transaction-diagram">
+        <mxGraphModel dx="988" dy="568" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="Transaction" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
+                    <mxGeometry x="320" y="240" width="200" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="+ transactionDate: Date&#xa;+ budgetMonth: month_enum_t&#xa;+ category: category_enum_t&#xa;+ name: String&#xa;+ amount: Number&#xa;+ type: transaction_enum_t" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="2" vertex="1">
+                    <mxGeometry y="26" width="200" height="114" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="Budget" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
+                    <mxGeometry x="320" y="40" width="200" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="+ budgetMonth: month_enum_t&#xa;+ budgetYear: Number&#xa;+ name: String&#xa;+ categories: CategoryGroup[]&#xa;+ total: Number" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="12" vertex="1">
+                    <mxGeometry y="26" width="200" height="114" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="CategoryGroup" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
+                    <mxGeometry x="600" y="30" width="200" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="+ name: String&#xa;+ budgetMonth: month_enum_t&#xa;+ subGroups: CategoryGroup[]&#xa;+ categories: TransactionCategory[]&#xa;+ totalPlanned?: Number&#xa;+ totalActual?: Number" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="14" vertex="1">
+                    <mxGeometry y="26" width="200" height="94" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" value="TransactionCategory" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
+                    <mxGeometry x="600" y="200" width="200" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" value="+ name: String&#xa;+ budgetMonth: month_enum_t&#xa;+ category: category_enum_t&#xa;+ plannedAmount: Number&#xa;+ actualAmount: Number&#xa;+ notes: String&#xa;+ transactions: Transaction[]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="22" vertex="1">
+                    <mxGeometry y="26" width="200" height="114" as="geometry"/>
+                </mxCell>
+                <mxCell id="40" value="Bank" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="40" width="200" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="41" value="+ name: String&#xa;+ accounts: BankAccount[]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="40" vertex="1">
+                    <mxGeometry y="26" width="200" height="54" as="geometry"/>
+                </mxCell>
+                <mxCell id="42" value="BankAccount" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="160" width="200" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="43" value="+ name: String&#xa;+ notes: String&#xa;+ lineItems: AccountLineItem[]&#xa;+ runningTotal: Number&#xa;+ clearedAmount: Number&#xa;+ unclearedAmount: Number" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="42" vertex="1">
+                    <mxGeometry y="26" width="200" height="114" as="geometry"/>
+                </mxCell>
+                <mxCell id="44" value="AccountLineItem" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="340" width="200" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="45" value="+ transaction: Transaction&#xa;+ runningBalance: Number&#xa;+ is_cleared: Bool" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="44" vertex="1">
+                    <mxGeometry y="26" width="200" height="54" as="geometry"/>
+                </mxCell>
+                <mxCell id="46" value="" style="endArrow=diamondThin;endFill=1;endSize=24;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="42" target="40" edge="1">
+                    <mxGeometry width="160" relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="47" value="" style="endArrow=diamondThin;endFill=1;endSize=24;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="44" target="42" edge="1">
+                    <mxGeometry width="160" relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="48" value="" style="endArrow=diamondThin;endFill=0;endSize=24;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="45" target="3" edge="1">
+                    <mxGeometry width="160" relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="49" value="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="290" y="350" width="30" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="50" value="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="140" y="120" width="30" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="51" value="*" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="140" y="310" width="30" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="52" value="*" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="140" y="130" width="30" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="53" value="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="240" y="350" width="30" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="enum transaction_enum_t {&#xa;    INFLOW, OUTFLOW&#xa;}" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="1" vertex="1">
+                    <mxGeometry x="350" y="410" width="160" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="enum category_enum_t {&#xa;    HOUSING,&#xa;    TRANSPORTATION,&#xa;    FOOD,&#xa;    UTILITIES,&#xa;    HEALTHCARE,&#xa;    INSURANCE,&#xa;    SAVINGS,&#xa;    DEBT,&#xa;    PERSONAL,&#xa;    RECREATION,&#xa;    INCOME,&#xa;    OTHER&#xa;}" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="1" vertex="1">
+                    <mxGeometry x="600" y="380" width="200" height="220" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="enum month_enum_t {&#xa;    JANUARY,&#xa;    FEBRUARY,&#xa;    MARCH,&#xa;    APRIL,&#xa;    MAY,&#xa;    JUNE,&#xa;    JULY,&#xa;    AUGUST,&#xa;    SEPTEMBER,&#xa;    OCTOBER,&#xa;    NOVEMBER,&#xa;    DECEMBER&#xa;}" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="1" vertex="1">
+                    <mxGeometry x="355" y="490" width="140" height="220" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="13" target="15" edge="1">
+                    <mxGeometry width="160" relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" value="" style="endArrow=diamondThin;endFill=0;endSize=24;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="22" target="14" edge="1">
+                    <mxGeometry width="160" relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="8" target="22" edge="1">
+                    <mxGeometry width="160" relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" value="*" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="700" y="170" width="30" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="27" value="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="700" y="140" width="30" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="31" value="" style="endArrow=diamondThin;endFill=0;endSize=24;html=1;rounded=0;curved=1;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" parent="1" source="14" target="14" edge="1">
+                    <mxGeometry width="160" relative="1" as="geometry">
+                        <mxPoint x="750" y="30" as="sourcePoint"/>
+                        <mxPoint x="850" y="70" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="850" y="20"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="32" value="*" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="800" y="10" width="30" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="33" value="" style="endArrow=diamondThin;endFill=1;endSize=24;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="3" target="23" edge="1">
+                    <mxGeometry width="160" relative="1" as="geometry">
+                        <mxPoint x="300" y="310" as="sourcePoint"/>
+                        <mxPoint x="590" y="270" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="280" y="323"/>
+                            <mxPoint x="280" y="270"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="34" value="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="570" y="240" width="30" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="35" value="*" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="290" y="290" width="30" height="30" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
