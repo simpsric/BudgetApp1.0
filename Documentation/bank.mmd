@@ -1,0 +1,70 @@
+classDiagram
+    class Bank {
+        +String name
+        +BankAccount[] accounts
+        +GetAccounts()
+        +AddAccount(BankAccount account)
+        +RemoveAccount(BankAccount account)
+        +GetAccount(String name)
+        +GetAccountLineItems(BankAccount account,[Date dateRangeStart, Date dateRangeEnd, category_enum_t category, transaction_enum_t type, month_enum_t budgetMonth, Decimal amount, String amountComparisonOperator, Boolean isCleared])
+        +AddTransaction(BankAccount account, Transaction transaction)
+        +RemoveTransaction(BankAccount account, Transaction transaction)
+        
+    }
+
+    class BankAccount {
+        +String name
+        +String notes
+        +AccountLineItem[] lineItems
+        +Number runningTotal
+        +Number clearedAmount
+        +Number unclearedAmount
+        +__init__(name: String, notes: String)
+        +get_name() String
+        +get_notes() String
+        +get_line_items() AccountLineItem[]
+        +get_running_total() Number
+        +get_cleared_amount() Number
+        +get_uncleared_amount() Number
+        +add_line_item(AccountLineItem line_item)
+        +remove_line_item(AccountLineItem line_item)
+        +get_line_item(String name, [Date dateRangeStart, Date dateRangeEnd, category_enum_t category, transaction_enum_t type, month_enum_t budgetMonth, Decimal amount, String amountComparisonOperator, Boolean isCleared])
+    }
+
+    class AccountLineItem {
+        +Transaction transaction
+        +Number current_balance
+        +String account_name
+        +__init__(transaction: Transaction, current_balance: Number, account_name: String)
+        +get_amount() Decimal
+        +get_date() Date
+        +get_type() transaction_enum_t
+        +get_category() category_enum_t
+        +get_name() String
+        +get_budget_month() month_enum_t
+        +get_account_name() String
+        +get_running_balance() Number
+        +is_cleared Boolean
+    }
+
+    class Transaction {
+        -Date transaction_date
+        -month_enum_t budget_month
+        -category_enum_t category
+        -String name
+        -Decimal amount
+        -transaction_enum_t type
+        -String account_name
+        +__init__(transaction_date: Date, budget_month: month_enum_t, category: category_enum_t, name: String, amount: Decimal, account_name: String, type: transaction_enum_t)
+        +get_amount() Decimal
+        +get_type() transaction_enum_t
+        +get_category() category_enum_t
+        +get_account_name() String
+        +get_transaction_date() Date
+        +get_budget_month() month_enum_t
+        +get_name() String
+    }
+
+    Bank *-- BankAccount : contains
+    BankAccount *-- AccountLineItem : contains
+    AccountLineItem --> Transaction : has
